@@ -153,6 +153,22 @@ footer a{color:var(--text3);text-decoration:none}
 .sticky-btn{font-size:14px;font-weight:500;color:#fff;background:var(--accent);padding:10px 28px;border-radius:100px;text-decoration:none;transition:all 0.25s;border:0;cursor:pointer;font-family:var(--sans)}
 .sticky-btn:hover{background:var(--text)}
 
+/* Reviews */
+.reviews{padding:100px 0;border-top:1px solid var(--bg3)}
+.reviews-header{text-align:center;margin-bottom:48px}
+.reviews-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:0 max(24px,calc((100vw - 1060px)/2));-webkit-overflow-scrolling:touch}
+.reviews-track::-webkit-scrollbar{display:none}
+.reviews-track{-ms-overflow-style:none;scrollbar-width:none}
+.review-card{flex:0 0 min(400px,85vw);scroll-snap-align:start;background:var(--card);border:1px solid var(--bg3);border-radius:16px;padding:32px;display:flex;flex-direction:column;gap:20px;transition:all 0.35s ease}
+.review-card:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(180,90,43,0.06);transform:translateY(-3px)}
+.review-stars{color:var(--accent);font-size:18px;letter-spacing:2px}
+.review-quote{font-size:15px;line-height:1.7;color:var(--text2);font-style:italic;flex:1;margin:0}
+.review-author{display:flex;align-items:center;gap:12px;padding-top:4px;border-top:1px solid var(--bg2)}
+.review-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:500;font-size:16px;font-family:var(--serif);flex-shrink:0}
+.review-name{font-size:14px;font-weight:500;color:var(--text)}
+.review-role{font-size:13px;color:var(--text3)}
+@media(max-width:768px){.review-card{flex:0 0 85vw}}
+
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(20px);transition:all 0.6s cubic-bezier(0.22,1,0.36,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -301,6 +317,51 @@ Få en gratis skisse
 </div>
 </section>
 
+<!-- Section: Reviews -->
+<section class="reviews" id="reviews">
+<div class="wrap">
+<div class="reviews-header">
+<div class="section-label">Hva kundene sier</div>
+<div class="section-title" style="margin-left:auto;margin-right:auto;text-align:center">Ekte resultater fra ekte bedrifter</div>
+</div>
+</div>
+<div class="reviews-track">
+<div class="review-card reveal">
+<div class="review-stars">★★★★★</div>
+<blockquote class="review-quote">"Nettsem leverte en nettside for Læralt som vi er stolte av. Rask prosess, profesjonelt resultat, og vi merket økt trafikk med en gang. Anbefales varmt."</blockquote>
+<div class="review-author">
+<div class="review-avatar" style="background:#B45A2B">S</div>
+<div>
+<div class="review-name">Samuel Rishi</div>
+<div class="review-role">Grunnlegger, Læralt</div>
+</div>
+</div>
+</div>
+<div class="review-card reveal reveal-d1">
+<div class="review-stars">★★★★★</div>
+<blockquote class="review-quote">"Vi trengte en nettside som matchet vibbene våre — og Nettsem naglet det. Fra idé til ferdig side på under to dager. Gjestene våre finner oss mye lettere nå."</blockquote>
+<div class="review-author">
+<div class="review-avatar" style="background:#3D7A4A">B</div>
+<div>
+<div class="review-name">Badstuegutta</div>
+<div class="review-role">Badstue & velvære, Oslo</div>
+</div>
+</div>
+</div>
+<div class="review-card reveal reveal-d2">
+<div class="review-stars">★★★★★</div>
+<blockquote class="review-quote">"Matheasy hadde ingen nettside — bare en Instagram. Nettsem bygde noe som faktisk konverterer besøkende til elever. Enkel prosess, null stress."</blockquote>
+<div class="review-author">
+<div class="review-avatar" style="background:#6B5CE7">M</div>
+<div>
+<div class="review-name">Samuel Rishi</div>
+<div class="review-role">Grunnlegger, Matheasy</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <section class="pricing" id="pricing">
 <div class="wrap">
 <div class="pricing-center">
@@ -394,7 +455,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Reveal on scroll (Trick 2 + general)
-const reveals = document.querySelectorAll('.reveal, .f-card');
+const reveals = document.querySelectorAll('.reveal, .f-card, .review-card');
 const revealObs = new IntersectionObserver((entries) => {
   entries.forEach((e, idx) => {
     if (e.isIntersecting) {
