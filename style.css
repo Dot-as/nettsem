@@ -82,6 +82,8 @@ nav.scrolled {
   letter-spacing: -0.02em;
 }
 
+.logo-accent { color: var(--accent) }
+
 .nav-links {
   display: flex;
   gap: 32px;
