@@ -345,4 +345,140 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+
+  // ===== ONBOARDING WIZARD =====
+  const wizard = document.getElementById('wizard');
+  const wizardNav = document.getElementById('wizard-nav');
+  const wizardBack = document.getElementById('wizard-back');
+  const wizardNext = document.getElementById('wizard-next');
+  const wizardClose = wizard.querySelector('.wizard-close');
+  const wizardDone = wizard.querySelector('.wizard-done');
+  const wizardProgressFill = wizard.querySelector('.wizard-progress-fill');
+  const wizardSteps = wizard.querySelectorAll('.wizard-step');
+  let wizardCurrentStep = 1;
+  const wizardTotalSteps = 4;
+
+  function openWizard(preselectedPackage) {
+    wizardCurrentStep = 1;
+    wizard.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(i => i.value = '');
+    wizard.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
+    if (preselectedPackage) {
+      const radio = wizard.querySelector('input[name="wiz-package"][value="' + preselectedPackage + '"]');
+      if (radio) radio.checked = true;
+    }
+    updateWizardStep();
+    wizard.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      const firstInput = wizard.querySelector('.wizard-step.active input');
+      if (firstInput) firstInput.focus();
+    }, 400);
+  }
+
+  function closeWizard() {
+    wizard.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  function updateWizardStep() {
+    wizardSteps.forEach(step => {
+      const stepNum = parseInt(step.dataset.step);
+      step.classList.remove('active', 'exit-left');
+      if (stepNum === wizardCurrentStep) {
+        step.classList.add('active');
+      } else if (stepNum < wizardCurrentStep) {
+        step.classList.add('exit-left');
+      }
+    });
+    const progress = wizardCurrentStep <= wizardTotalSteps
+      ? (wizardCurrentStep / wizardTotalSteps) * 100
+      : 100;
+    wizardProgressFill.style.width = progress + '%';
+    wizard.setAttribute('data-step', wizardCurrentStep);
+    wizardBack.style.visibility = wizardCurrentStep <= 1 ? 'hidden' : 'visible';
+    wizardNext.textContent = wizardCurrentStep >= wizardTotalSteps ? 'Send inn' : 'Neste';
+    wizardNav.style.display = wizardCurrentStep > wizardTotalSteps ? 'none' : 'flex';
+  }
+
+  function validateWizardStep() {
+    if (wizardCurrentStep === 1) {
+      return document.getElementById('wiz-company').value.trim().length > 0
+        && document.getElementById('wiz-name').value.trim().length > 0;
+    }
+    if (wizardCurrentStep === 2) {
+      return document.getElementById('wiz-email').value.trim().includes('@')
+        && document.getElementById('wiz-phone').value.trim().length > 0;
+    }
+    if (wizardCurrentStep === 3) {
+      return !!wizard.querySelector('input[name="wiz-package"]:checked');
+    }
+    if (wizardCurrentStep === 4) {
+      return !!wizard.querySelector('input[name="wiz-service"]:checked');
+    }
+    return true;
+  }
+
+  wizardNext.addEventListener('click', () => {
+    if (!validateWizardStep()) {
+      wizard.querySelector('.wizard-card').style.animation = 'wizardShake 0.4s ease';
+      setTimeout(() => { wizard.querySelector('.wizard-card').style.animation = ''; }, 400);
+      return;
+    }
+    if (wizardCurrentStep >= wizardTotalSteps) {
+      const formData = {
+        company: document.getElementById('wiz-company').value.trim(),
+        name: document.getElementById('wiz-name').value.trim(),
+        email: document.getElementById('wiz-email').value.trim(),
+        phone: document.getElementById('wiz-phone').value.trim(),
+        package: wizard.querySelector('input[name="wiz-package"]:checked').value,
+        service: wizard.querySelector('input[name="wiz-service"]:checked').value
+      };
+      console.log('Wizard submission:', formData);
+      wizardCurrentStep = 5;
+      updateWizardStep();
+      return;
+    }
+    wizardCurrentStep++;
+    updateWizardStep();
+    setTimeout(() => {
+      const input = wizard.querySelector('.wizard-step.active input');
+      if (input && (input.type === 'text' || input.type === 'email' || input.type === 'tel')) {
+        input.focus();
+      }
+    }, 100);
+  });
+
+  wizardBack.addEventListener('click', () => {
+    if (wizardCurrentStep > 1) {
+      wizardCurrentStep--;
+      updateWizardStep();
+    }
+  });
+
+  wizardClose.addEventListener('click', closeWizard);
+  wizardDone.addEventListener('click', closeWizard);
+  wizard.addEventListener('click', (e) => { if (e.target === wizard) closeWizard(); });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && wizard.classList.contains('active')) closeWizard();
+  });
+
+  wizard.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && wizardCurrentStep <= wizardTotalSteps) {
+      e.preventDefault();
+      wizardNext.click();
+    }
+  });
+
+  // Hook up all CTA buttons to open wizard
+  document.querySelectorAll('.hero-cta, .nav-cta, .sticky-btn, .price-cta').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      let pkg = null;
+      if (btn.classList.contains('price-cta')) {
+        pkg = btn.closest('.price-card-featured') ? 'growth' : 'standard';
+      }
+      openWizard(pkg);
+    });
+  });
+
 });

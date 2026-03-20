@@ -89,46 +89,41 @@
 
   <!-- BEFORE: Ugly 2005 overlay (fixed, covers entire page) -->
   <div class="hero-before" id="hero-before">
-    <div class="hero-before-inner">
-      <div class="hba-ugly-banner">⚠️ NETTSIDE UNDER KONSTRUKSJON ⚠️</div>
-      <table class="hba-ugly-nav">
-        <tr>
+    <div class="hero-before-inner" id="ugly-inner">
+      <!-- UGLY HERO — matches real hero -->
+      <div style="min-height:100vh;display:flex;flex-direction:column;">
+        <div class="hba-ugly-banner">⚠️ NETTSIDE UNDER KONSTRUKSJON ⚠️</div>
+        <table class="hba-ugly-nav"><tr>
           <td class="hba-ugly-logo">~ Nettsem ~</td>
-          <td><a href="#features">Hjem</a> | <a href="#pricing">Priser</a> | <a href="#contact">Kontakt oss</a> | <a href="#">Gjestebok</a></td>
-        </tr>
-      </table>
-      <div class="hba-ugly-hero">
-        <marquee class="hba-ugly-marquee">★★★ Vi lager nettsider for ALLE bedrifter! Billig og bra! Ring nå! ★★★</marquee>
-        <h2 class="hba-ugly-title">VELKOMMEN TIL NETTSEM!!!</h2>
-        <p class="hba-ugly-sub">Vi er et firma som lager nettsider for bedrifter i hele norge. Vi kan lage alle typer nettsider. <font color="red"><b>NYHET!</b></font> Nå også med gjestebok!</p>
-        <table class="hba-ugly-buttons">
-          <tr>
-            <td><a href="#contact" class="hba-ugly-btn">KLIKK HER FOR TILBUD!!!</a></td>
-            <td><a href="tel:+4712345678" class="hba-ugly-btn2">RING: 123 45 678</a></td>
-          </tr>
-        </table>
-        <br>
-        <div class="hba-ugly-features">
-          <div class="hba-ugly-feature">
-            <div class="hba-ugly-icon"></div>
-            <b>Billige priser!!!</b><br>
-            <font size="2">Vi er billigst i Norge kanskje</font>
-          </div>
-          <div class="hba-ugly-feature">
-            <div class="hba-ugly-icon"></div>
-            <b>Raske nettsider</b><br>
-            <font size="2">Funker på Internet Explorer</font>
-          </div>
-          <div class="hba-ugly-feature">
-            <div class="hba-ugly-icon"></div>
-            <b>Gratis teller!!</b><br>
-            <font size="2">Se hvor mange besøker siden</font>
+          <td><a href="#" style="color:#0000EE;">Hjem</a> | <a href="#" style="color:#0000EE;">Priser</a> | <a href="#" style="color:#0000EE;">Kontakt oss</a> | <a href="#" style="color:#0000EE;">Gjestebok</a></td>
+        </tr></table>
+        <div class="hba-ugly-hero" style="flex:1;display:flex;flex-direction:column;justify-content:center;">
+          <marquee class="hba-ugly-marquee">★★★ Vi lager nettsider for ALLE bedrifter! Billig og bra! Ring nå! ★★★</marquee>
+          <h2 class="hba-ugly-title">VELKOMMEN TIL NETTSEM!!!</h2>
+          <p class="hba-ugly-sub">Vi er et firma som lager nettsider for bedrifter i hele norge. Vi kan lage alle typer nettsider. <font color="red"><b>NYHET!</b></font> Nå også med gjestebok!</p>
+          <table class="hba-ugly-buttons"><tr>
+            <td><a href="#" class="hba-ugly-btn">KLIKK HER FOR TILBUD!!!</a></td>
+            <td><a href="#" class="hba-ugly-btn2">RING: 123 45 678</a></td>
+          </tr></table>
+          <br>
+          <div class="hba-ugly-features">
+            <div class="hba-ugly-feature"><div class="hba-ugly-icon"></div><b>Billige priser!!!</b><br><font size="2">Vi er billigst i Norge kanskje</font></div>
+            <div class="hba-ugly-feature"><div class="hba-ugly-icon"></div><b>Raske nettsider</b><br><font size="2">Funker på Internet Explorer</font></div>
+            <div class="hba-ugly-feature"><div class="hba-ugly-icon"></div><b>Gratis teller!!</b><br><font size="2">Se hvor mange besøker siden</font></div>
           </div>
         </div>
       </div>
-      <!-- More ugly sections to fill full page -->
-      <div style="padding:32px 24px;border-top:2px dashed #999;margin-top:24px;">
-        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:12px;">VÅRE TJENESTER!!!</h3>
+      <!-- UGLY STATS — matches real stats -->
+      <div style="padding:80px 24px;background:#D0D0D0;border-top:3px solid #999;text-align:center;">
+        <table style="margin:0 auto;font-size:13px;" cellpadding="20"><tr>
+          <td style="text-align:center;"><font size="6" color="#003399" style="font-family:'Comic Sans MS',cursive;"><b>47</b></font><br><font size="2">besøkende totalt!!!</font></td>
+          <td style="text-align:center;"><font size="6" color="#003399" style="font-family:'Comic Sans MS',cursive;"><b>3</b></font><br><font size="2">kunder (kanskje)</font></td>
+          <td style="text-align:center;"><font size="6" color="#003399" style="font-family:'Comic Sans MS',cursive;"><b>∞</b></font><br><font size="2">uker leveringstid</font></td>
+        </tr></table>
+      </div>
+      <!-- UGLY FEATURES — matches real features -->
+      <div style="padding:100px 24px;border-top:2px dashed #999;">
+        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:24px;">VÅRE TJENESTER!!!</h3>
         <table border="1" cellpadding="8" cellspacing="0" style="width:100%;max-width:700px;border-color:#999;font-size:13px;background:#FFFFCC;">
           <tr style="background:#D0D0D0;font-weight:bold;"><td>Tjeneste</td><td>Pris</td><td>Leveringstid</td></tr>
           <tr><td>Enkel hjemmeside (1 side)</td><td><font color="red"><b>TILBUD! 999kr</b></font></td><td>2-3 uker</td></tr>
@@ -137,10 +132,11 @@
           <tr><td>Flash-intro (anbefalt!!!)</td><td>799kr</td><td>1 uke</td></tr>
           <tr><td>Besøksteller</td><td><font color="green"><b>GRATIS!</b></font></td><td>Samme dag</td></tr>
         </table>
+        <br><p style="font-size:11px;color:#999;">* Alle priser er inkl. moms kanskje. Vi vet ikke helt.</p>
       </div>
-
-      <div style="padding:32px 24px;border-top:2px dashed #999;">
-        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:12px;">KUNDEANMELDELSER</h3>
+      <!-- UGLY RESULTS — matches real results/reviews -->
+      <div style="padding:100px 24px;background:#D0D0D0;border-top:2px dashed #999;">
+        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:24px;">VÅRE FORNØYDE KUNDER!!!</h3>
         <div style="background:#FFFFCC;border:1px solid #CCCC00;padding:16px;margin-bottom:12px;font-size:13px;max-width:600px;">
           <b>⭐⭐⭐ "Bra nettside!!!"</b><br><i>- Ansen fra Bodø, 2008</i><br>"Fikk nettside med blinkeknapper og gjestebok. Veldig fornøyd!!!"
         </div>
@@ -150,36 +146,41 @@
         <div style="background:#FFFFCC;border:1px solid #CCCC00;padding:16px;margin-bottom:12px;font-size:13px;max-width:600px;">
           <b>⭐⭐⭐ "Billig!"</b><br><i>- Ole fra Bergen, 2009</i><br>"Billigste jeg fant. Besøkstelleren funker også!"
         </div>
+        <br><p style="font-size:12px;color:#666;">[ Her skulle det vært bilder men vi har ikke kamera ]</p>
       </div>
-
-      <div style="padding:32px 24px;border-top:2px dashed #999;">
-        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:12px;">OM OSS</h3>
-        <p style="font-size:13px;line-height:1.8;max-width:600px;">Vi er et lite firma som lager nettsider for alle typer bedrifter i hele Norge. Vi bruker de nyeste teknologiene som HTML, Macromedia Flash og FrontPage 2003. Alle nettsider kommer med gratis besøksteller og gjestebok!</p>
+      <!-- UGLY PRICING — matches real pricing -->
+      <div style="padding:100px 24px;border-top:2px dashed #999;text-align:center;">
+        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:26px;margin-bottom:24px;">PRISER</h3>
+        <div style="background:#FFFFCC;border:3px outset #CCCC00;padding:32px;max-width:400px;margin:0 auto;font-size:14px;">
+          <font size="7" color="red" style="font-family:'Comic Sans MS',cursive;"><b>999 kr</b></font><br>
+          <font size="3">for en hel nettside!!!</font><br><br>
+          <font size="2" color="#666">* gjestebok koster 500kr ekstra<br>* flash-intro koster 799kr ekstra<br>* besøksteller er GRATIS<br>* vi vet ikke hva hosting er</font>
+          <br><br>
+          <a href="#" class="hba-ugly-btn" style="display:inline-block;">BESTILL NÅ!!!</a>
+        </div>
+        <br><marquee style="font-size:12px;color:red;max-width:500px;" scrollamount="3"><b>TILBUD! Gjestebok HALV PRIS denne uken!!!</b></marquee>
+      </div>
+      <!-- UGLY CTA — matches real CTA -->
+      <div style="padding:100px 24px;background:#D0D0D0;border-top:2px dashed #999;text-align:center;">
+        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:24px;margin-bottom:16px;">KONTAKT OSS!!!</h3>
+        <p style="font-size:13px;line-height:1.8;max-width:500px;margin:0 auto 24px;">Ring oss eller send e-post! Vi svarer innen 5-7 virkedager (kanskje).</p>
+        <p style="font-size:14px;"><b>Telefon:</b> 123 45 678<br><b>E-post:</b> <a href="#" style="color:#0000EE;">webmaster@nettsem.no</a><br><b>ICQ:</b> 384729174<br><b>Fax:</b> 123 45 679</p>
         <br>
-        <p style="font-size:13px;"><b>Kontakt:</b><br>E-post: <a href="#" style="color:#0000EE;">webmaster@nettsem.no</a><br>Telefon: 123 45 678<br>ICQ: 384729174</p>
-      </div>
-
-      <div style="padding:32px 24px;border-top:2px dashed #999;">
-        <h3 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:22px;margin-bottom:12px;">GJESTEBOK</h3>
-        <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;max-width:500px;">
-          <b>Ansen</b> <font color="gray">(14.03.2009)</font><br>Kul nettside!! Besøk min side også: <font color="blue"><u>www.ansen-sin-side.no</u></font>
-        </div>
-        <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;max-width:500px;">
-          <b>webmaster</b> <font color="gray">(12.03.2009)</font><br>Takk for besøket! Husk å legge oss til i favoritter! ⭐
-        </div>
-        <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;max-width:500px;">
-          <b>Kansen_2003</b> <font color="gray">(10.03.2009)</font><br>Kan dere lage nettside for katten min? 🐱 Han heter Pusur.
+        <h4 style="font-family:'Comic Sans MS',cursive;color:#003399;font-size:18px;margin-bottom:12px;">GJESTEBOK</h4>
+        <div style="max-width:500px;margin:0 auto;text-align:left;">
+          <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;"><b>Ansen</b> <font color="gray">(14.03.2009)</font><br>Kul nettside!! Besøk min side også: <font color="blue"><u>www.ansen-sin-side.no</u></font></div>
+          <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;"><b>webmaster</b> <font color="gray">(12.03.2009)</font><br>Takk for besøket! Husk å legge oss til i favoritter! ⭐</div>
+          <div style="background:#fff;border:2px inset #ccc;padding:12px;font-size:12px;margin-bottom:8px;"><b>Kansen_2003</b> <font color="gray">(10.03.2009)</font><br>Kan dere lage nettside for katten min? 🐱</div>
         </div>
       </div>
-
-      <div style="padding:32px 24px;border-top:2px dashed #999;text-align:center;">
-        <marquee style="font-size:11px;color:#999;" scrollamount="2">🌟 Nettsem - Vi lager nettsider for ALLE! 🌟 Ring oss i dag! 🌟 Nå med gjestebok! 🌟</marquee>
-      </div>
-
-      <div class="hba-ugly-footer" style="margin-top:auto;">
+      <!-- UGLY FOOTER -->
+      <div class="hba-ugly-footer">
         <span>Besøksteller: 00047</span> &nbsp;|&nbsp;
         <span>Laget med FrontPage 2003</span> &nbsp;|&nbsp;
-        <span>Sist oppdatert: 14. mars 2009</span>
+        <span>Sist oppdatert: 14. mars 2009</span><br><br>
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='31'%3E%3Crect width='88' height='31' fill='%23ddd' rx='2'/%3E%3Ctext x='44' y='20' text-anchor='middle' font-family='Arial' font-size='10' fill='%23666'%3EHTML 4.01%3C/text%3E%3C/svg%3E" alt="" style="margin:0 4px;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='31'%3E%3Crect width='88' height='31' fill='%23ddd' rx='2'/%3E%3Ctext x='44' y='20' text-anchor='middle' font-family='Arial' font-size='10' fill='%23666'%3E800x600%3C/text%3E%3C/svg%3E" alt="" style="margin:0 4px;">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='31'%3E%3Crect width='88' height='31' fill='%23ddd' rx='2'/%3E%3Ctext x='44' y='20' text-anchor='middle' font-family='Arial' font-size='10' fill='%23666'%3EIE 6.0%3C/text%3E%3C/svg%3E" alt="" style="margin:0 4px;">
       </div>
     </div>
   </div>
