@@ -87,11 +87,6 @@
         </svg>
       </a>
       <p class="hero-cta-sub">Vi sender et konkret forslag til hvordan nettsiden din kan se ut — før du bestemmer deg eller betaler noe som helst.</p>
-      <!-- Before/After toggle -->
-      <div class="ba-toggle" id="ba-toggle">
-        <button class="ba-toggle-btn" data-mode="before" id="ba-btn-before">Før</button>
-        <button class="ba-toggle-btn active" data-mode="after" id="ba-btn-after">Etter</button>
-      </div>
       <div class="hero-trust">
         <span><span class="dot"></span> Betal kun hvis du er fornøyd</span>
         <span><span class="dot"></span> Ingen bindingstid</span>
@@ -631,6 +626,12 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
+  <!-- Before/After toggle (fixed, always visible) -->
+  <div class="ba-toggle" id="ba-toggle">
+    <button class="ba-toggle-btn" data-mode="before" id="ba-btn-before">Før</button>
+    <button class="ba-toggle-btn active" data-mode="after" id="ba-btn-after">Etter</button>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>

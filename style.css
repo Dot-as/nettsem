@@ -1228,16 +1228,35 @@ footer .footer-sep {
   pointer-events: auto;
 }
 
-/* Before/After toggle */
+/* Before/After toggle — always visible */
 .ba-toggle {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1100;
   display: flex;
-  justify-content: center;
-  margin: 24px auto 0;
-  background: var(--bg2);
+  background: var(--card);
   border: 1px solid var(--bg3);
   border-radius: 100px;
   padding: 4px;
-  width: fit-content;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+/* Ugly style when before is active */
+body.before-active .ba-toggle {
+  background: #D0D0D0;
+  border-color: #999;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+body.before-active .ba-toggle-btn {
+  color: #666;
+  font-family: 'Comic Sans MS', cursive;
+}
+body.before-active .ba-toggle-btn.active {
+  background: #003399;
+  color: #fff;
 }
 
 /* Hide real nav when before is active */
