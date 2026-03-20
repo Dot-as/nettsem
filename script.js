@@ -255,6 +255,18 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('mouseup', () => { sliderDragging = false; });
   window.addEventListener('touchend', () => { sliderDragging = false; });
 
+  // Match ugly section heights to real sections dynamically
+  function syncUglyHeights() {
+    document.querySelectorAll('.ugly-s[data-match]').forEach(ugly => {
+      const real = document.getElementById(ugly.dataset.match);
+      if (real) ugly.style.minHeight = real.offsetHeight + 'px';
+    });
+  }
+  syncUglyHeights();
+  window.addEventListener('resize', syncUglyHeights);
+  // Re-sync after fonts/images load
+  window.addEventListener('load', syncUglyHeights);
+
   // Sync scroll: when page scrolls, move the ugly overlay content up
   if (beforeInner) {
     window.addEventListener('scroll', () => {
