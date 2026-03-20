@@ -879,7 +879,7 @@ footer .footer-sep {
 
 .ba-label {
   position: absolute;
-  top: 16px;
+  bottom: 16px;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.06em;
