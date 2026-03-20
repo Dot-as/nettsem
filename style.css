@@ -72,14 +72,12 @@ nav.scrolled {
 }
 
 .logo {
-  font-family: var(--serif);
-  font-size: 22px;
-  color: var(--text);
   text-decoration: none;
-  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
 }
 
-.logo span { color: var(--accent) }
+.logo-img { height: 32px; width: auto }
 
 .nav-links {
   display: flex;
@@ -746,6 +744,172 @@ footer .footer-sep {
 }
 
 
+/* ===== CURSOR GLOW EFFECT ===== */
+.cursor-glow {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 118, 62, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+.cursor-glow.visible { opacity: 1 }
+
+@media (hover: none) {
+  .cursor-glow { display: none }
+}
+
+
+/* ===== KINETIC TYPOGRAPHY ===== */
+.kinetic-word {
+  display: inline-block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+}
+
+.kinetic-line .kinetic-word {
+  opacity: 0;
+  transform: translateY(32px) rotate(2deg);
+}
+
+.kinetic-line.visible .kinetic-word {
+  opacity: 1;
+  transform: translateY(0) rotate(0deg);
+}
+
+.kinetic-line.visible .kinetic-word:nth-child(1) { transition-delay: 0s }
+.kinetic-line.visible .kinetic-word:nth-child(2) { transition-delay: 0.06s }
+.kinetic-line.visible .kinetic-word:nth-child(3) { transition-delay: 0.12s }
+.kinetic-line.visible .kinetic-word:nth-child(4) { transition-delay: 0.18s }
+.kinetic-line.visible .kinetic-word:nth-child(5) { transition-delay: 0.24s }
+.kinetic-line.visible .kinetic-word:nth-child(6) { transition-delay: 0.3s }
+.kinetic-line.visible .kinetic-word:nth-child(7) { transition-delay: 0.36s }
+.kinetic-line.visible .kinetic-word:nth-child(8) { transition-delay: 0.42s }
+
+
+/* ===== BEFORE / AFTER SLIDER ===== */
+.ba-section {
+  padding: 100px 24px;
+}
+
+.ba-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.ba-container {
+  max-width: 720px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--bg3);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.06);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.ba-side {
+  width: 100%;
+  display: block;
+}
+
+.ba-before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  width: 50%;
+  z-index: 2;
+  border-right: 2px solid var(--accent);
+}
+
+.ba-before img {
+  width: 720px;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ba-after img {
+  width: 100%;
+  display: block;
+}
+
+.ba-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 40px;
+  margin-left: -20px;
+  z-index: 3;
+  cursor: ew-resize;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ba-handle-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(180, 90, 43, 0.3);
+  transition: transform 0.2s;
+}
+
+.ba-handle-btn:hover { transform: scale(1.1) }
+
+.ba-handle-btn svg {
+  width: 18px;
+  height: 18px;
+  color: #fff;
+}
+
+.ba-label {
+  position: absolute;
+  top: 16px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 100px;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.ba-label-before {
+  left: 16px;
+  background: rgba(180, 50, 30, 0.85);
+  color: #fff;
+}
+
+.ba-label-after {
+  right: 16px;
+  background: rgba(61, 122, 74, 0.85);
+  color: #fff;
+}
+
+.ba-caption {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text3);
+}
+
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   .hero { padding-top: 120px; padding-bottom: 80px }
@@ -756,6 +920,8 @@ footer .footer-sep {
   .price-card { padding: 36px 28px }
   .sticky-text { display: none }
   .sticky-inner { justify-content: center }
+  .ba-before img { width: 100vw }
+  .ba-section { padding: 60px 24px }
 }
 
 @media (max-width: 480px) {
