@@ -77,7 +77,7 @@ nav.scrolled {
   align-items: center;
 }
 
-.logo-img { height: 48px; width: auto }
+.logo-img { height: 96px; width: auto }
 
 .nav-links {
   display: flex;
