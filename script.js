@@ -226,63 +226,43 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ===== HERO BEFORE / AFTER SLIDER =====
+  // ===== FULL-PAGE BEFORE / AFTER SLIDER =====
   const uglyNav = document.getElementById('ugly-nav-overlay');
-  const heroSection = document.getElementById('hero');
+  const before = document.getElementById('hero-before');
+  const handle = document.getElementById('hero-slider-handle');
+  const beforeInner = before ? before.querySelector('.hero-before-inner') : null;
 
-  function initSlider(containerId, beforeId, handleId, allowClickThrough) {
-    const container = document.getElementById(containerId);
-    const before = document.getElementById(beforeId);
-    const handle = document.getElementById(handleId);
+  let sliderDragging = false;
 
-    if (!container || !before || !handle) return;
-
-    let dragging = false;
-
-    function setPos(x) {
-      const rect = container.getBoundingClientRect();
-      let pct = ((x - rect.left) / rect.width) * 100;
-      pct = Math.max(4, Math.min(96, pct));
-      before.style.width = pct + '%';
-      handle.style.left = pct + '%';
-      // Sync ugly nav overlay width
-      if (uglyNav && containerId === 'hero') {
-        const pxWidth = (pct / 100) * rect.width + rect.left;
-        uglyNav.style.width = pxWidth + 'px';
-      }
-    }
-
-    handle.addEventListener('mousedown', (e) => { e.preventDefault(); dragging = true; });
-    handle.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
-
-    window.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
-    window.addEventListener('touchmove', (e) => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
-    window.addEventListener('mouseup', () => { dragging = false; });
-    window.addEventListener('touchend', () => { dragging = false; });
-
-    if (!allowClickThrough) {
-      container.addEventListener('click', (e) => { setPos(e.clientX); });
+  function setSliderPos(x) {
+    if (!before || !handle) return;
+    let pct = (x / window.innerWidth) * 100;
+    pct = Math.max(2, Math.min(98, pct));
+    before.style.width = pct + '%';
+    handle.style.left = pct + '%';
+    if (uglyNav) {
+      uglyNav.style.width = pct + '%';
     }
   }
 
-  initSlider('hero', 'hero-before', 'hero-slider-handle', true);
-
-  // Hide ugly nav when scrolled past hero
-  function updateUglyNav() {
-    if (!uglyNav || !heroSection) return;
-    const heroBottom = heroSection.getBoundingClientRect().bottom;
-    if (heroBottom <= 0) {
-      uglyNav.classList.add('hidden');
-    } else {
-      uglyNav.classList.remove('hidden');
-    }
+  if (handle) {
+    handle.addEventListener('mousedown', (e) => { e.preventDefault(); sliderDragging = true; });
+    handle.addEventListener('touchstart', () => { sliderDragging = true; }, { passive: true });
   }
 
-  // Set initial ugly nav width
-  if (uglyNav && heroSection) {
-    const rect = heroSection.getBoundingClientRect();
-    uglyNav.style.width = (0.5 * rect.width + rect.left) + 'px';
+  window.addEventListener('mousemove', (e) => { if (sliderDragging) setSliderPos(e.clientX); });
+  window.addEventListener('touchmove', (e) => { if (sliderDragging) setSliderPos(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('mouseup', () => { sliderDragging = false; });
+  window.addEventListener('touchend', () => { sliderDragging = false; });
+
+  // Sync scroll: when page scrolls, scroll the ugly overlay too
+  if (beforeInner) {
+    window.addEventListener('scroll', () => {
+      beforeInner.scrollTop = window.scrollY;
+    }, { passive: true });
   }
+
+  function updateUglyNav() {}
 
   // ===== BEFORE / AFTER SLIDER =====
   const ba = document.getElementById('ba');
