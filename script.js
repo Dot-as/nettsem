@@ -237,11 +237,13 @@ document.addEventListener('DOMContentLoaded', () => {
       before.classList.add('active');
       btnBefore.classList.add('active');
       btnAfter.classList.remove('active');
+      document.body.classList.add('before-active');
     });
     btnAfter.addEventListener('click', () => {
       before.classList.remove('active');
       btnAfter.classList.add('active');
       btnBefore.classList.remove('active');
+      document.body.classList.remove('before-active');
     });
   }
 

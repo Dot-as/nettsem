@@ -1230,17 +1230,20 @@ footer .footer-sep {
 
 /* Before/After toggle */
 .ba-toggle {
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1002;
   display: flex;
-  background: var(--card);
+  justify-content: center;
+  margin: 24px auto 0;
+  background: var(--bg2);
   border: 1px solid var(--bg3);
   border-radius: 100px;
   padding: 4px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: fit-content;
+}
+
+/* Hide real nav when before is active */
+body.before-active nav {
+  opacity: 0;
+  pointer-events: none;
 }
 .ba-toggle-btn {
   font-family: var(--sans);
