@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nettsem — Admin</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --bg: #FAF8F5; --bg2: #F3EFE8; --bg3: #EAE4D9;
+      --card: #FFFFFF; --text: #2C2418; --text2: #7A7060; --text3: #A89E90;
+      --accent: #B45A2B; --accent2: #D4763E; --accent-soft: #FCEEE5;
+      --green: #3D7A4A; --green-soft: #EAF4EC;
+      --red: #C0392B; --red-soft: #FDECEA;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    body { font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+
+    .admin-header {
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--bg3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--card);
+    }
+    .admin-logo { font-family: var(--serif); font-size: 20px; color: var(--text); }
+    .admin-logo span { color: var(--accent); }
+    .admin-stats { display: flex; gap: 24px; font-size: 13px; color: var(--text2); }
+    .admin-stat strong { color: var(--text); font-weight: 500; }
+
+    .admin-container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    .admin-filters {
+      display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .admin-filter {
+      font-family: var(--sans); font-size: 13px; padding: 6px 16px;
+      border: 1.5px solid var(--bg3); border-radius: 100px;
+      background: var(--card); color: var(--text2); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .admin-filter:hover { border-color: var(--accent); color: var(--text); }
+    .admin-filter.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+    .lead-card {
+      background: var(--card);
+      border: 1px solid var(--bg3);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .lead-card:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(180,90,43,0.05); }
+    .lead-card.contacted { opacity: 0.6; }
+    .lead-card.contacted:hover { opacity: 1; }
+
+    .lead-main { display: flex; flex-direction: column; gap: 8px; }
+    .lead-top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .lead-company { font-family: var(--serif); font-size: 20px; color: var(--text); }
+    .lead-pkg {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.06em; padding: 3px 10px; border-radius: 100px;
+    }
+    .lead-pkg-gratis { background: var(--green-soft); color: var(--green); }
+    .lead-pkg-standard { background: var(--accent-soft); color: var(--accent); }
+    .lead-pkg-growth { background: #EDE9FE; color: #6B5CE7; }
+
+    .lead-contact { font-size: 14px; color: var(--text2); }
+    .lead-contact a { color: var(--accent); text-decoration: none; }
+    .lead-contact a:hover { text-decoration: underline; }
+
+    .lead-services { display: flex; gap: 6px; flex-wrap: wrap; }
+    .lead-svc {
+      font-size: 12px; padding: 3px 10px; border-radius: 6px;
+      background: var(--bg2); color: var(--text2);
+    }
+
+    .lead-urls { font-size: 13px; color: var(--text3); }
+    .lead-urls a { color: var(--text2); }
+
+    .lead-time { font-size: 12px; color: var(--text3); white-space: nowrap; }
+
+    .lead-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+    .lead-toggle {
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      padding: 8px 20px; border-radius: 10px; cursor: pointer;
+      transition: all 0.2s; border: none;
+    }
+    .lead-toggle-pending { background: var(--green); color: #fff; }
+    .lead-toggle-pending:hover { background: #2E6339; }
+    .lead-toggle-done { background: var(--bg2); color: var(--text3); }
+    .lead-toggle-done:hover { background: var(--bg3); color: var(--text); }
+
+    .admin-empty {
+      text-align: center; padding: 80px 24px; color: var(--text3);
+    }
+    .admin-empty h2 { font-family: var(--serif); font-size: 24px; color: var(--text2); margin-bottom: 8px; }
+
+    .admin-loading { text-align: center; padding: 80px; color: var(--text3); font-size: 14px; }
+
+    @media (max-width: 640px) {
+      .lead-card { grid-template-columns: 1fr; }
+      .lead-actions { flex-direction: row; align-items: center; }
+      .admin-stats { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-header">
+    <div class="admin-logo">Nett<span>sem</span> Admin</div>
+    <div class="admin-stats" id="stats"></div>
+  </div>
+
+  <div class="admin-container">
+    <div class="admin-filters">
+      <button class="admin-filter active" data-filter="all">Alle</button>
+      <button class="admin-filter" data-filter="pending">Ikke kontaktet</button>
+      <button class="admin-filter" data-filter="contacted">Kontaktet</button>
+    </div>
+    <div id="leads"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    let allLeads = [];
+    let currentFilter = 'all';
+
+    const serviceLabels = {
+      'ny-nettside': 'Ny nettside',
+      'redesign': 'Redesign',
+      'nettbutikk': 'Nettbutikk',
+      'booking': 'Booking',
+      'landingsside': 'Landingsside',
+      'annet': 'Annet'
+    };
+
+    function timeAgo(date) {
+      const diff = Date.now() - new Date(date).getTime();
+      const mins = Math.floor(diff / 60000);
+      if (mins < 1) return 'Akkurat nå';
+      if (mins < 60) return mins + ' min siden';
+      const hours = Math.floor(mins / 60);
+      if (hours < 24) return hours + ' t siden';
+      const days = Math.floor(hours / 24);
+      if (days === 1) return 'I går';
+      return days + ' dager siden';
+    }
+
+    function renderLeads() {
+      const container = document.getElementById('leads');
+      const stats = document.getElementById('stats');
+
+      const filtered = currentFilter === 'all' ? allLeads
+        : currentFilter === 'pending' ? allLeads.filter(l => !l.contacted)
+        : allLeads.filter(l => l.contacted);
+
+      const total = allLeads.length;
+      const pending = allLeads.filter(l => !l.contacted).length;
+      stats.innerHTML = `
+        <span><strong>${total}</strong> totalt</span>
+        <span><strong>${pending}</strong> venter</span>
+        <span><strong>${total - pending}</strong> kontaktet</span>
+      `;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="admin-empty">
+            <h2>${currentFilter === 'all' ? 'Ingen henvendelser ennå' : 'Ingen i denne kategorien'}</h2>
+            <p>${currentFilter === 'all' ? 'Henvendelser fra nettsiden dukker opp her.' : 'Prøv en annen filter.'}</p>
+          </div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(lead => `
+        <div class="lead-card ${lead.contacted ? 'contacted' : ''}" data-id="${lead.id}">
+          <div class="lead-main">
+            <div class="lead-top">
+              <span class="lead-company">${esc(lead.company)}</span>
+              <span class="lead-pkg lead-pkg-${lead.package}">${lead.package}</span>
+            </div>
+            <div class="lead-contact">
+              ${esc(lead.contact_name)} &middot;
+              <a href="mailto:${esc(lead.email)}">${esc(lead.email)}</a> &middot;
+              <a href="tel:${esc(lead.phone)}">${esc(lead.phone)}</a>
+            </div>
+            ${lead.services && lead.services.length ? `
+              <div class="lead-services">
+                ${lead.services.map(s => `<span class="lead-svc">${serviceLabels[s] || s}</span>`).join('')}
+              </div>` : ''}
+            ${lead.url || lead.inspiration ? `
+              <div class="lead-urls">
+                ${lead.url ? `Nettside: <a href="${esc(lead.url)}" target="_blank">${esc(lead.url)}</a>` : ''}
+                ${lead.url && lead.inspiration ? ' &middot; ' : ''}
+                ${lead.inspiration ? `Inspo: <a href="${esc(lead.inspiration)}" target="_blank">${esc(lead.inspiration)}</a>` : ''}
+              </div>` : ''}
+          </div>
+          <div class="lead-actions">
+            <button class="lead-toggle ${lead.contacted ? 'lead-toggle-done' : 'lead-toggle-pending'}"
+              onclick="toggleContacted('${lead.id}', ${!lead.contacted})">
+              ${lead.contacted ? 'Kontaktet ✓' : 'Marker kontaktet'}
+            </button>
+            <span class="lead-time">${timeAgo(lead.created_at)}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function esc(str) {
+      if (!str) return '';
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+
+    async function toggleContacted(id, value) {
+      const { error } = await sb.from('leads').update({ contacted: value }).eq('id', id);
+      if (error) { console.error(error); return; }
+      const lead = allLeads.find(l => l.id === id);
+      if (lead) lead.contacted = value;
+      renderLeads();
+    }
+
+    async function loadLeads() {
+      document.getElementById('leads').innerHTML = '<div class="admin-loading">Laster...</div>';
+      const { data, error } = await sb.from('leads').select('*').order('created_at', { ascending: false });
+      if (error) {
+        document.getElementById('leads').innerHTML = `<div class="admin-empty"><h2>Feil</h2><p>${error.message}</p></div>`;
+        return;
+      }
+      allLeads = data || [];
+      renderLeads();
+    }
+
+    // Filters
+    document.querySelectorAll('.admin-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.admin-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderLeads();
+      });
+    });
+
+    // Realtime updates
+    sb.channel('leads-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'leads' }, () => loadLeads())
+      .subscribe();
+
+    loadLeads();
+  </script>
+</body>
+</html>

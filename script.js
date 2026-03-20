@@ -441,16 +441,24 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wizardCurrentStep >= wizardTotalSteps) {
       const formData = {
         company: document.getElementById('wiz-company').value.trim(),
-        name: document.getElementById('wiz-name').value.trim(),
+        contact_name: document.getElementById('wiz-name').value.trim(),
         email: document.getElementById('wiz-email').value.trim(),
         phone: document.getElementById('wiz-phone').value.trim(),
         package: wizard.querySelector('input[name="wiz-package"]:checked').value,
         services: Array.from(wizard.querySelectorAll('input[name="wiz-service"]:checked')).map(c => c.value),
-        url: document.getElementById('wiz-url').value.trim(),
-        inspiration: document.getElementById('wiz-inspo').value.trim()
+        url: document.getElementById('wiz-url').value.trim() || null,
+        inspiration: document.getElementById('wiz-inspo').value.trim() || null
       };
-      console.log('Wizard submission:', formData);
-      wizardCurrentStep = 5;
+      // Save to Supabase
+      if (typeof SUPABASE_URL !== 'undefined' && SUPABASE_URL !== 'https://YOUR_PROJECT.supabase.co') {
+        const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        sb.from('leads').insert(formData).then(({ error }) => {
+          if (error) console.error('Lead save error:', error);
+        });
+      } else {
+        console.log('Wizard submission (Supabase not configured):', formData);
+      }
+      wizardCurrentStep = 6;
       updateWizardStep();
       return;
     }
