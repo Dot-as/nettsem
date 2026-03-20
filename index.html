@@ -25,16 +25,17 @@
       <a href="#" class="logo"><img src="logo.svg" alt="Nettsem" class="logo-img"></a>
       <div class="nav-links">
         <a href="#features">Hva vi gjør</a>
-        <a href="#showcase">Eksempler</a>
+        <a href="#reviews">Kunder</a>
         <a href="#pricing">Pris</a>
         <a href="#contact" class="nav-cta">Få gratis skisse</a>
       </div>
     </div>
   </nav>
 
-  <!-- Section 1: Hero with rolling text + kinetic typography -->
-  <section class="hero" id="hero">
-    <div class="container">
+  <!-- Section 1: Hero with rolling text + kinetic typography + Before/After slider -->
+  <section class="hero hero-slider" id="hero">
+    <!-- AFTER: The real beautiful hero (existing content) -->
+    <div class="container hero-after-content">
       <p class="hero-label">Nettsider levert på 48 timer</p>
       <h1>
         <span class="kinetic-line visible">
@@ -58,8 +59,7 @@
         </span>
       </h1>
       <p class="hero-sub">
-        Du driver bedriften. Vi sørger for at folk finner deg på nett. 
-        Profesjonelt, raskt, og uten risiko.
+        Du driver bedriften. Vi sørger for at folk finner deg, stoler på deg og kontakter deg – på 48 timer, uten risiko.
       </p>
       <a href="#contact" class="hero-cta">
         Få en gratis skisse
@@ -73,6 +73,62 @@
         <span><span class="dot"></span> Ferdig på 48 timer</span>
       </div>
     </div>
+
+    <!-- BEFORE: Ugly 2005 overlay -->
+    <div class="hero-before" id="hero-before">
+      <div class="hero-before-inner">
+        <div class="hba-ugly-banner">⚠️ NETTSIDE UNDER KONSTRUKSJON ⚠️</div>
+        <table class="hba-ugly-nav">
+          <tr>
+            <td class="hba-ugly-logo">~ Nettsem ~</td>
+            <td><a href="#features">Hjem</a> | <a href="#pricing">Priser</a> | <a href="#contact">Kontakt oss</a> | <a href="#">Gjestebok</a></td>
+          </tr>
+        </table>
+        <div class="hba-ugly-hero">
+          <marquee class="hba-ugly-marquee">★★★ Vi lager nettsider for ALLE bedrifter! Billig og bra! Ring nå! ★★★</marquee>
+          <h2 class="hba-ugly-title">VELKOMMEN TIL NETTSEM!!!</h2>
+          <p class="hba-ugly-sub">Vi er et firma som lager nettsider for bedrifter i hele norge. Vi kan lage alle typer nettsider. <font color="red"><b>NYHET!</b></font> Nå også med gjestebok!</p>
+          <table class="hba-ugly-buttons">
+            <tr>
+              <td><a href="#contact" class="hba-ugly-btn">KLIKK HER FOR TILBUD!!!</a></td>
+              <td><a href="tel:+4712345678" class="hba-ugly-btn2">RING: 123 45 678</a></td>
+            </tr>
+          </table>
+          <br>
+          <div class="hba-ugly-features">
+            <div class="hba-ugly-feature">
+              <div class="hba-ugly-icon"></div>
+              <b>Billige priser!!!</b><br>
+              <font size="2">Vi er billigst i Norge kanskje</font>
+            </div>
+            <div class="hba-ugly-feature">
+              <div class="hba-ugly-icon"></div>
+              <b>Raske nettsider</b><br>
+              <font size="2">Funker på Internet Explorer</font>
+            </div>
+            <div class="hba-ugly-feature">
+              <div class="hba-ugly-icon"></div>
+              <b>Gratis teller!!</b><br>
+              <font size="2">Se hvor mange besøker siden</font>
+            </div>
+          </div>
+        </div>
+        <div class="hba-ugly-footer">
+          <span>Besøksteller: 00047</span> &nbsp;|&nbsp;
+          <span>Laget med FrontPage 2003</span> &nbsp;|&nbsp;
+          <span>Sist oppdatert: 14. mars 2009</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slider handle -->
+    <div class="hero-slider-handle" id="hero-slider-handle">
+      <div class="hero-slider-handle-btn">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h8M7 6l-3 3 3 3M11 6l3 3-3 3"/></svg>
+      </div>
+    </div>
+    <span class="hero-slider-label hero-slider-label-before">Før</span>
+    <span class="hero-slider-label hero-slider-label-after">Etter</span>
   </section>
 
   <!-- Section 2: Stats with animated counters -->
@@ -80,11 +136,11 @@
     <div class="stats-grid">
       <div class="reveal">
         <div class="stat-num" data-target="97" data-suffix="%">0%</div>
-        <div class="stat-label">sjekker nettsiden din før de tar kontakt</div>
+        <div class="stat-label">sjekker deg på nett før de tar kontakt</div>
       </div>
       <div class="reveal">
         <div class="stat-num" data-target="24" data-suffix="/100">0/100</div>
-        <div class="stat-label">gjennomsnittlig score for norske nettsider</div>
+        <div class="stat-label">gjennomsnittlig score for norske småbedrifter på nett</div>
       </div>
       <div class="reveal">
         <div class="stat-num" data-target="48" data-suffix="t">0t</div>
@@ -110,22 +166,22 @@
         <div class="feature-card">
           <div class="feature-num">01</div>
           <div class="feature-title">Klar på 48 timer</div>
-          <div class="feature-desc">Ingen uker med møter og revisjoner. Vi leverer en ferdig, profesjonell nettside på to dager.</div>
+          <div class="feature-desc">Fra usynlig til profesjonell på nett på to dager — uten uker med mas og møter.</div>
         </div>
         <div class="feature-card">
           <div class="feature-num">02</div>
           <div class="feature-title">Mobiloptimalisert</div>
-          <div class="feature-desc">Over 70% av kundene dine bruker mobil. Nettsiden ser perfekt ut på alle skjermer.</div>
+          <div class="feature-desc">Over 70% av kundene dine kommer fra mobil — siden din ser bra ut der kundene er.</div>
         </div>
         <div class="feature-card">
           <div class="feature-num">03</div>
           <div class="feature-title">Synlig på Google</div>
-          <div class="feature-desc">SEO-grunnlaget er inkludert. Riktige titler, beskrivelser, og hastighet som Google belønner.</div>
+          <div class="feature-desc">Grunnleggende SEO så du faktisk dukker opp når folk søker firmanavnet ditt.</div>
         </div>
         <div class="feature-card">
           <div class="feature-num">04</div>
           <div class="feature-title">Vi tar oss av alt</div>
-          <div class="feature-desc">Hosting, oppdateringer, sikkerhet. Du trenger ikke tenke på noe teknisk — vi fikser det.</div>
+          <div class="feature-desc">Én fast pris. Ingen teknisk dritt. Vi drifter alt for deg.</div>
         </div>
       </div>
     </div>
@@ -271,7 +327,7 @@
           </li>
           <li>
             <span class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span>
-            Kontaktskjema og Google Maps
+            Tekstforslag inkludert — du trenger ikke skrive selv
           </li>
           <li>
             <span class="check-icon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg></span>
@@ -285,7 +341,7 @@
         </div>
       </div>
       <div class="recurring-note reveal">
-        Deretter <strong>1 500 kr/mnd</strong> for hosting, vedlikehold og support. Ingen bindingstid.
+        Deretter <strong>1 500 kr/mnd</strong> for hosting, sikkerhet, backup, små endringer og norsk support. Ingen bindingstid.
       </div>
     </div>
   </section>
@@ -300,7 +356,7 @@
         <span class="kinetic-word">bli</span>
         <span class="kinetic-word">sett?</span>
       </h2>
-      <p class="reveal">Vi lager en gratis skisse av nettsiden din. Liker du den? Da bygger vi den ferdig.</p>
+      <p class="reveal">Klar på 48 timer — betal kun hvis du er fornøyd. Vi lager en gratis skisse av nettsiden din.</p>
       <div class="cta-actions reveal">
         <a href="#contact" class="hero-cta">
           Få en gratis skisse

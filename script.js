@@ -176,53 +176,88 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteBtn2 = document.querySelector('.site-btn-secondary');
   const dots = document.querySelectorAll('.showcase-dot');
 
-  function rotateSite() {
-    const body = document.querySelector('.browser-body');
-    body.style.opacity = '0';
-    body.style.transform = 'translateY(8px)';
-
-    setTimeout(() => {
-      currentSite = (currentSite + 1) % sites.length;
-      const site = sites[currentSite];
-      
-      browserUrl.textContent = site.url;
-      siteName.textContent = site.name;
-      siteDesc.textContent = site.desc;
-      siteBtn1.textContent = site.btn1;
-      siteBtn2.textContent = site.btn2;
-
-      dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSite);
-      });
-
-      body.style.opacity = '1';
-      body.style.transform = 'translateY(0)';
-    }, 300);
-  }
-
-  setInterval(rotateSite, 4000);
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
+  if (browserUrl && siteName) {
+    function rotateSite() {
       const body = document.querySelector('.browser-body');
       body.style.opacity = '0';
       body.style.transform = 'translateY(8px)';
 
       setTimeout(() => {
-        currentSite = i;
-        const site = sites[i];
+        currentSite = (currentSite + 1) % sites.length;
+        const site = sites[currentSite];
+
         browserUrl.textContent = site.url;
         siteName.textContent = site.name;
         siteDesc.textContent = site.desc;
-        siteBtn1.textContent = site.btn1;
-        siteBtn2.textContent = site.btn2;
-        dots.forEach((d, j) => d.classList.toggle('active', j === i));
+        if (siteBtn1) siteBtn1.textContent = site.btn1;
+        if (siteBtn2) siteBtn2.textContent = site.btn2;
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === currentSite);
+        });
+
         body.style.opacity = '1';
         body.style.transform = 'translateY(0)';
       }, 300);
-    });
-  });
+    }
 
+    setInterval(rotateSite, 4000);
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        const body = document.querySelector('.browser-body');
+        body.style.opacity = '0';
+        body.style.transform = 'translateY(8px)';
+
+        setTimeout(() => {
+          currentSite = i;
+          const site = sites[i];
+          browserUrl.textContent = site.url;
+          siteName.textContent = site.name;
+          siteDesc.textContent = site.desc;
+          if (siteBtn1) siteBtn1.textContent = site.btn1;
+          if (siteBtn2) siteBtn2.textContent = site.btn2;
+          dots.forEach((d, j) => d.classList.toggle('active', j === i));
+          body.style.opacity = '1';
+          body.style.transform = 'translateY(0)';
+        }, 300);
+      });
+    });
+  }
+
+
+  // ===== HERO BEFORE / AFTER SLIDER =====
+  function initSlider(containerId, beforeId, handleId, allowClickThrough) {
+    const container = document.getElementById(containerId);
+    const before = document.getElementById(beforeId);
+    const handle = document.getElementById(handleId);
+
+    if (!container || !before || !handle) return;
+
+    let dragging = false;
+
+    function setPos(x) {
+      const rect = container.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(4, Math.min(96, pct));
+      before.style.width = pct + '%';
+      handle.style.left = pct + '%';
+    }
+
+    handle.addEventListener('mousedown', (e) => { e.preventDefault(); dragging = true; });
+    handle.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
+
+    window.addEventListener('mousemove', (e) => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('touchmove', (e) => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mouseup', () => { dragging = false; });
+    window.addEventListener('touchend', () => { dragging = false; });
+
+    if (!allowClickThrough) {
+      container.addEventListener('click', (e) => { setPos(e.clientX); });
+    }
+  }
+
+  initSlider('hero', 'hero-before', 'hero-slider-handle', true);
 
   // ===== BEFORE / AFTER SLIDER =====
   const ba = document.getElementById('ba');
