@@ -497,7 +497,7 @@
       </div>
       <div class="wizard-body">
         <div class="wizard-step active" data-step="1">
-          <p class="wizard-label">Steg 1 av 4</p>
+          <p class="wizard-label">Steg 1 av 5</p>
           <h2 class="wizard-heading">La oss planlegge</h2>
           <p class="wizard-sub">Fortell oss litt om bedriften din</p>
           <div class="wizard-fields">
@@ -512,7 +512,7 @@
           </div>
         </div>
         <div class="wizard-step" data-step="2">
-          <p class="wizard-label">Steg 2 av 4</p>
+          <p class="wizard-label">Steg 2 av 5</p>
           <h2 class="wizard-heading">Hvordan når vi deg?</h2>
           <p class="wizard-sub">Vi sender forslaget på e-post</p>
           <div class="wizard-fields">
@@ -527,10 +527,19 @@
           </div>
         </div>
         <div class="wizard-step" data-step="3">
-          <p class="wizard-label">Steg 3 av 4</p>
+          <p class="wizard-label">Steg 3 av 5</p>
           <h2 class="wizard-heading">Hvilken pakke passer?</h2>
           <p class="wizard-sub">Du kan alltid endre senere</p>
           <div class="wizard-options">
+            <label class="wizard-option">
+              <input type="radio" name="wiz-package" value="gratis" checked>
+              <div class="wizard-option-card wizard-option-free">
+                <span class="wizard-option-badge wizard-option-badge-free">Anbefalt start</span>
+                <span class="wizard-option-name">Gratis forhåndsvisning</span>
+                <span class="wizard-option-price">0 kr</span>
+                <span class="wizard-option-desc">Vi lager et konkret forslag til nettsiden din — helt uforpliktende. Du bestemmer etterpå om du vil gå videre.</span>
+              </div>
+            </label>
             <label class="wizard-option">
               <input type="radio" name="wiz-package" value="standard">
               <div class="wizard-option-card">
@@ -551,37 +560,52 @@
           </div>
         </div>
         <div class="wizard-step" data-step="4">
-          <p class="wizard-label">Steg 4 av 4</p>
+          <p class="wizard-label">Steg 4 av 5</p>
           <h2 class="wizard-heading">Hva trenger du?</h2>
-          <p class="wizard-sub">Velg det som passer best</p>
+          <p class="wizard-sub">Velg alt som passer</p>
           <div class="wizard-options wizard-options-grid">
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="ny-nettside">
+              <input type="checkbox" name="wiz-service" value="ny-nettside">
               <div class="wizard-option-card wizard-option-compact">Ny nettside</div>
             </label>
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="redesign">
+              <input type="checkbox" name="wiz-service" value="redesign">
               <div class="wizard-option-card wizard-option-compact">Redesign</div>
             </label>
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="nettbutikk">
+              <input type="checkbox" name="wiz-service" value="nettbutikk">
               <div class="wizard-option-card wizard-option-compact">Nettbutikk</div>
             </label>
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="booking">
+              <input type="checkbox" name="wiz-service" value="booking">
               <div class="wizard-option-card wizard-option-compact">Booking</div>
             </label>
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="landingsside">
+              <input type="checkbox" name="wiz-service" value="landingsside">
               <div class="wizard-option-card wizard-option-compact">Landingsside</div>
             </label>
             <label class="wizard-option">
-              <input type="radio" name="wiz-service" value="annet">
+              <input type="checkbox" name="wiz-service" value="annet">
               <div class="wizard-option-card wizard-option-compact">Annet</div>
             </label>
           </div>
         </div>
         <div class="wizard-step" data-step="5">
+          <p class="wizard-label">Steg 5 av 5 — valgfritt</p>
+          <h2 class="wizard-heading">Har du en lenke?</h2>
+          <p class="wizard-sub">Lim inn eksisterende nettside eller inspirasjon — så vi vet hva du liker</p>
+          <div class="wizard-fields">
+            <div class="wizard-field">
+              <label for="wiz-url">Eksisterende nettside</label>
+              <input type="url" id="wiz-url" placeholder="https://mittfirma.no">
+            </div>
+            <div class="wizard-field">
+              <label for="wiz-inspo">Inspirasjon</label>
+              <input type="url" id="wiz-inspo" placeholder="https://en-side-jeg-liker.no">
+            </div>
+          </div>
+        </div>
+        <div class="wizard-step" data-step="6">
           <div class="wizard-success">
             <div class="wizard-success-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l7 7 13-13"/></svg>

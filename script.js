@@ -368,16 +368,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const wizardProgressFill = wizard.querySelector('.wizard-progress-fill');
   const wizardSteps = wizard.querySelectorAll('.wizard-step');
   let wizardCurrentStep = 1;
-  const wizardTotalSteps = 4;
+  const wizardTotalSteps = 5;
 
   function openWizard(preselectedPackage) {
     wizardCurrentStep = 1;
-    wizard.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(i => i.value = '');
+    wizard.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], input[type="url"]').forEach(i => i.value = '');
     wizard.querySelectorAll('input[type="radio"]').forEach(i => i.checked = false);
-    if (preselectedPackage) {
-      const radio = wizard.querySelector('input[name="wiz-package"][value="' + preselectedPackage + '"]');
-      if (radio) radio.checked = true;
-    }
+    const pkg = preselectedPackage || 'gratis';
+    const radio = wizard.querySelector('input[name="wiz-package"][value="' + pkg + '"]');
+    if (radio) radio.checked = true;
     updateWizardStep();
     wizard.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -427,6 +426,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (wizardCurrentStep === 4) {
       return !!wizard.querySelector('input[name="wiz-service"]:checked');
     }
+    if (wizardCurrentStep === 5) {
+      return true; // optional step
+    }
     return true;
   }
 
@@ -443,7 +445,9 @@ document.addEventListener('DOMContentLoaded', () => {
         email: document.getElementById('wiz-email').value.trim(),
         phone: document.getElementById('wiz-phone').value.trim(),
         package: wizard.querySelector('input[name="wiz-package"]:checked').value,
-        service: wizard.querySelector('input[name="wiz-service"]:checked').value
+        services: Array.from(wizard.querySelectorAll('input[name="wiz-service"]:checked')).map(c => c.value),
+        url: document.getElementById('wiz-url').value.trim(),
+        inspiration: document.getElementById('wiz-inspo').value.trim()
       };
       console.log('Wizard submission:', formData);
       wizardCurrentStep = 5;
