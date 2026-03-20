@@ -1,0 +1,16 @@
+{
+  "version": "0.2.4",
+  "name": "nettsem",
+  "path": "C:\\Users\\samue\\Documents\\nettsem",
+  "stats": {
+    "files": 1,
+    "symbols": 13,
+    "relationships": 34,
+    "clusters": 3,
+    "flows": 0,
+    "dead_code": 4,
+    "coupled_pairs": 0,
+    "embeddings": 14
+  },
+  "last_indexed_at": "2026-03-20T11:04:52.449516+00:00"
+}
