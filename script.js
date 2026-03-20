@@ -301,6 +301,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
+  // ===== SCREENSHOT CAROUSELS =====
+  document.querySelectorAll('.result-carousel').forEach(carousel => {
+    const track = carousel.querySelector('.result-carousel-track');
+    const dotsContainer = carousel.querySelector('.result-carousel-dots');
+    const images = track.querySelectorAll('img');
+    if (!dotsContainer || images.length <= 1) {
+      if (dotsContainer) dotsContainer.style.display = 'none';
+      return;
+    }
+    images.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => {
+        track.scrollTo({ left: track.offsetWidth * i, behavior: 'smooth' });
+      });
+      dotsContainer.appendChild(dot);
+    });
+    const dots = dotsContainer.querySelectorAll('.carousel-dot');
+    track.addEventListener('scroll', () => {
+      const idx = Math.round(track.scrollLeft / track.offsetWidth);
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }, { passive: true });
+  });
+
+
   // ===== SCROLL LISTENER =====
   function onScroll() {
     updateProgress();

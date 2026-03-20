@@ -450,6 +450,59 @@ section { padding: 0 24px }
   color: var(--text3);
 }
 
+.result-carousel {
+  position: relative;
+}
+
+.result-carousel-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.result-carousel-track::-webkit-scrollbar { display: none }
+.result-carousel-track { -ms-overflow-style: none; scrollbar-width: none }
+
+.result-carousel-track img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  scroll-snap-align: start;
+  display: block;
+}
+
+.result-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,0.3));
+}
+
+.result-carousel-dots .carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s;
+}
+
+.result-carousel-dots .carousel-dot.active {
+  background: #fff;
+  width: 20px;
+  border-radius: 4px;
+}
+
 .result-review {
   padding: 16px 20px 20px;
   border-top: 1px solid var(--bg2);
