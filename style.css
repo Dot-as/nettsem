@@ -75,9 +75,12 @@ nav.scrolled {
   text-decoration: none;
   display: flex;
   align-items: center;
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.02em;
 }
-
-.logo-img { height: 96px; width: auto }
 
 .nav-links {
   display: flex;
