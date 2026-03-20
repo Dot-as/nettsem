@@ -32,14 +32,10 @@
     </div>
   </nav>
 
-  <!-- Ugly nav overlay (synced with hero slider) -->
-  <div class="ugly-nav-overlay" id="ugly-nav-overlay">
-    <div class="ugly-nav-inner">
-      <div class="ugly-nav-bar">
-        <span class="ugly-nav-logo">~ Nettsem ~</span>
-        <span class="ugly-nav-links"><a href="#features">Hjem</a> | <a href="#pricing">Priser</a> | <a href="#contact">Kontakt</a> | <a href="#">Gjestebok</a></span>
-      </div>
-    </div>
+  <!-- Before/After toggle -->
+  <div class="ba-toggle" id="ba-toggle">
+    <button class="ba-toggle-btn" data-mode="before" id="ba-btn-before">Før</button>
+    <button class="ba-toggle-btn active" data-mode="after" id="ba-btn-after">Etter</button>
   </div>
 
   <!-- Section 1: Hero with rolling text + kinetic typography + Before/After slider -->
@@ -168,14 +164,6 @@
     </div>
   </div>
 
-  <!-- Slider handle (fixed, covers entire page) -->
-  <div class="hero-slider-handle" id="hero-slider-handle">
-    <div class="hero-slider-handle-btn">
-      <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 9h8M7 6l-3 3 3 3M11 6l3 3-3 3"/></svg>
-    </div>
-  </div>
-  <span class="hero-slider-label hero-slider-label-before">Før</span>
-  <span class="hero-slider-label hero-slider-label-after">Etter</span>
 
   <!-- Section 2: Stats with animated counters -->
   <section class="stats" id="stats">

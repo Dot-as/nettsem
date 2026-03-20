@@ -226,34 +226,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 
-  // ===== FULL-PAGE BEFORE / AFTER SLIDER =====
-  const uglyNav = document.getElementById('ugly-nav-overlay');
+  // ===== BEFORE / AFTER TOGGLE =====
   const before = document.getElementById('hero-before');
-  const handle = document.getElementById('hero-slider-handle');
   const beforeInner = before ? before.querySelector('.hero-before-inner') : null;
+  const btnBefore = document.getElementById('ba-btn-before');
+  const btnAfter = document.getElementById('ba-btn-after');
 
-  let sliderDragging = false;
-
-  function setSliderPos(x) {
-    if (!before || !handle) return;
-    let pct = (x / window.innerWidth) * 100;
-    pct = Math.max(2, Math.min(98, pct));
-    before.style.width = pct + '%';
-    handle.style.left = pct + '%';
-    if (uglyNav) {
-      uglyNav.style.width = pct + '%';
-    }
+  if (btnBefore && btnAfter && before) {
+    btnBefore.addEventListener('click', () => {
+      before.classList.add('active');
+      btnBefore.classList.add('active');
+      btnAfter.classList.remove('active');
+    });
+    btnAfter.addEventListener('click', () => {
+      before.classList.remove('active');
+      btnAfter.classList.add('active');
+      btnBefore.classList.remove('active');
+    });
   }
-
-  if (handle) {
-    handle.addEventListener('mousedown', (e) => { e.preventDefault(); sliderDragging = true; });
-    handle.addEventListener('touchstart', () => { sliderDragging = true; }, { passive: true });
-  }
-
-  window.addEventListener('mousemove', (e) => { if (sliderDragging) setSliderPos(e.clientX); });
-  window.addEventListener('touchmove', (e) => { if (sliderDragging) setSliderPos(e.touches[0].clientX); }, { passive: true });
-  window.addEventListener('mouseup', () => { sliderDragging = false; });
-  window.addEventListener('touchend', () => { sliderDragging = false; });
 
   // Match ugly section heights to real sections dynamically
   function syncUglyHeights() {
