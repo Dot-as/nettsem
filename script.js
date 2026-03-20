@@ -255,10 +255,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('mouseup', () => { sliderDragging = false; });
   window.addEventListener('touchend', () => { sliderDragging = false; });
 
-  // Sync scroll: when page scrolls, scroll the ugly overlay too
+  // Sync scroll: when page scrolls, move the ugly overlay content up
   if (beforeInner) {
     window.addEventListener('scroll', () => {
-      beforeInner.scrollTop = window.scrollY;
+      beforeInner.style.transform = `translateY(-${window.scrollY}px)`;
     }, { passive: true });
   }
 
