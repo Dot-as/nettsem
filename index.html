@@ -72,7 +72,7 @@
         Du driver bedriften. Vi sørger for at folk finner deg, stoler på deg og kontakter deg – på 48 timer, uten risiko.
       </p>
       <a href="#contact" class="hero-cta">
-        Se forslag til ny nettside (gratis)
+        Se forslag til ny nettside for bedriften din (gratis)
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <path d="M3 8h10M9 4l4 4-4 4"/>
         </svg>
@@ -410,7 +410,7 @@
               Levert på 48 timer
             </li>
           </ul>
-          <a href="#contact" class="price-cta">Se forslag til ny nettside (gratis)</a>
+          <a href="#contact" class="price-cta">Se forslag til ny nettside for bedriften din (gratis)</a>
           <div class="price-setup">Oppstart: 6 000 kr — gratis ved 12 mnd</div>
         </div>
         <!-- Growth -->
@@ -445,7 +445,7 @@
               Månedsrapport på visninger og leads
             </li>
           </ul>
-          <a href="#contact" class="price-cta">Se forslag til ny nettside (gratis)</a>
+          <a href="#contact" class="price-cta">Se forslag til ny nettside for bedriften din (gratis)</a>
           <div class="price-setup">Oppstart: 6 000 kr — gratis ved 12 mnd</div>
         </div>
       </div>
@@ -472,7 +472,7 @@
       <p class="reveal">Klar på 48 timer — betal kun hvis du er fornøyd. Vi lager en gratis skisse av nettsiden din.</p>
       <div class="cta-actions reveal">
         <a href="#contact" class="hero-cta">
-          Se forslag til ny nettside (gratis)
+          Se forslag til ny nettside for bedriften din (gratis)
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
             <path d="M3 8h10M9 4l4 4-4 4"/>
           </svg>
@@ -499,6 +499,124 @@
     <div class="sticky-inner">
       <div class="sticky-text"><strong>Nettsem</strong> — Nettsider for norske bedrifter</div>
       <a href="#contact" class="sticky-btn">Se eksempler</a>
+    </div>
+  </div>
+
+  <!-- Onboarding Wizard -->
+  <div class="wizard-overlay" id="wizard">
+    <div class="wizard-card">
+      <button class="wizard-close" aria-label="Lukk">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l10 10M15 5L5 15"/></svg>
+      </button>
+      <div class="wizard-progress">
+        <div class="wizard-progress-fill"></div>
+      </div>
+      <div class="wizard-body">
+        <!-- Step 1: Bedrift + Kontaktperson -->
+        <div class="wizard-step active" data-step="1">
+          <p class="wizard-label">Steg 1 av 4</p>
+          <h2 class="wizard-heading">La oss planlegge</h2>
+          <p class="wizard-sub">Fortell oss litt om bedriften din</p>
+          <div class="wizard-fields">
+            <div class="wizard-field">
+              <label for="wiz-company">Firmanavn</label>
+              <input type="text" id="wiz-company" placeholder="F.eks. Hansen Rør & Varme">
+            </div>
+            <div class="wizard-field">
+              <label for="wiz-name">Kontaktperson</label>
+              <input type="text" id="wiz-name" placeholder="Ditt fulle navn">
+            </div>
+          </div>
+        </div>
+        <!-- Step 2: Kontaktinfo -->
+        <div class="wizard-step" data-step="2">
+          <p class="wizard-label">Steg 2 av 4</p>
+          <h2 class="wizard-heading">Hvordan når vi deg?</h2>
+          <p class="wizard-sub">Vi sender forslaget på e-post</p>
+          <div class="wizard-fields">
+            <div class="wizard-field">
+              <label for="wiz-email">E-post</label>
+              <input type="email" id="wiz-email" placeholder="din@epost.no">
+            </div>
+            <div class="wizard-field">
+              <label for="wiz-phone">Telefon</label>
+              <input type="tel" id="wiz-phone" placeholder="400 00 000">
+            </div>
+          </div>
+        </div>
+        <!-- Step 3: Pakke -->
+        <div class="wizard-step" data-step="3">
+          <p class="wizard-label">Steg 3 av 4</p>
+          <h2 class="wizard-heading">Hvilken pakke passer?</h2>
+          <p class="wizard-sub">Du kan alltid endre senere</p>
+          <div class="wizard-options">
+            <label class="wizard-option">
+              <input type="radio" name="wiz-package" value="standard">
+              <div class="wizard-option-card">
+                <span class="wizard-option-name">Standard</span>
+                <span class="wizard-option-price">1 500 kr/mnd</span>
+                <span class="wizard-option-desc">Nettside, drift og vedlikehold</span>
+              </div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-package" value="growth">
+              <div class="wizard-option-card">
+                <span class="wizard-option-badge">Mest populær</span>
+                <span class="wizard-option-name">Growth</span>
+                <span class="wizard-option-price">3 000 kr/mnd</span>
+                <span class="wizard-option-desc">Alt i Standard + Revenue Booster</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <!-- Step 4: Tjeneste -->
+        <div class="wizard-step" data-step="4">
+          <p class="wizard-label">Steg 4 av 4</p>
+          <h2 class="wizard-heading">Hva trenger du?</h2>
+          <p class="wizard-sub">Velg det som passer best</p>
+          <div class="wizard-options wizard-options-grid">
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="ny-nettside">
+              <div class="wizard-option-card wizard-option-compact">Ny nettside</div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="redesign">
+              <div class="wizard-option-card wizard-option-compact">Redesign</div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="nettbutikk">
+              <div class="wizard-option-card wizard-option-compact">Nettbutikk</div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="booking">
+              <div class="wizard-option-card wizard-option-compact">Booking</div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="landingsside">
+              <div class="wizard-option-card wizard-option-compact">Landingsside</div>
+            </label>
+            <label class="wizard-option">
+              <input type="radio" name="wiz-service" value="annet">
+              <div class="wizard-option-card wizard-option-compact">Annet</div>
+            </label>
+          </div>
+        </div>
+        <!-- Success -->
+        <div class="wizard-step" data-step="5">
+          <div class="wizard-success">
+            <div class="wizard-success-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 20l7 7 13-13"/></svg>
+            </div>
+            <h2 class="wizard-heading">Takk!</h2>
+            <p class="wizard-sub">Vi tar kontakt innen 24 timer med et forslag til nettsiden din.</p>
+            <button class="wizard-done">Lukk</button>
+          </div>
+        </div>
+      </div>
+      <div class="wizard-nav" id="wizard-nav">
+        <button class="wizard-back" id="wizard-back">Tilbake</button>
+        <button class="wizard-next" id="wizard-next">Neste</button>
+      </div>
     </div>
   </div>
 
