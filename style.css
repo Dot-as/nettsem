@@ -1132,6 +1132,57 @@ footer .footer-sep {
 .kinetic-line.visible .kinetic-word:nth-child(8) { transition-delay: 0.42s }
 
 
+/* ===== UGLY NAV OVERLAY (synced with hero slider) ===== */
+.ugly-nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 68px;
+  overflow: hidden;
+  z-index: 1001;
+  pointer-events: none;
+}
+
+.ugly-nav-inner {
+  width: 100vw;
+  height: 100%;
+}
+
+.ugly-nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 24px;
+  background: #D0D0D0;
+  border-bottom: 2px solid #999;
+}
+
+.ugly-nav-logo {
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 22px;
+  font-weight: bold;
+  color: #003399;
+  white-space: nowrap;
+}
+
+.ugly-nav-links {
+  font-size: 13px;
+  font-family: 'Times New Roman', serif;
+  white-space: nowrap;
+}
+
+.ugly-nav-links a {
+  color: #0000EE;
+  pointer-events: auto;
+}
+
+.ugly-nav-overlay.hidden {
+  display: none;
+}
+
+
 /* ===== HERO SLIDER OVERLAY ===== */
 .hero-slider {
   position: relative;
@@ -1387,11 +1438,21 @@ footer .footer-sep {
 }
 
 @media (max-width: 768px) {
-  .hero-before-inner { width: 200vw }
+  .hero-before-inner { width: 100vw }
   .hba-ugly-features { flex-direction: column; align-items: center }
+  .hba-ugly-feature { width: 90%; max-width: 240px }
   .hba-ugly-marquee { font-size: 11px }
   .hba-ugly-title { font-size: 20px }
+  .hba-ugly-btn { font-size: 13px; padding: 8px 16px }
+  .hba-ugly-btn2 { font-size: 12px; padding: 8px 14px; margin-left: 8px }
+  .hba-ugly-sub { font-size: 12px }
+  .hba-ugly-logo { font-size: 16px; padding-right: 12px }
+  .hba-ugly-nav { padding: 6px 12px; font-size: 11px }
+  .hba-ugly-nav a { font-size: 11px }
   .hero-slider-label { bottom: 16px; font-size: 11px }
+  .ugly-nav-links { font-size: 11px }
+  .ugly-nav-logo { font-size: 16px }
+  .ugly-nav-bar { padding: 0 16px }
 }
 
 

@@ -227,6 +227,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ===== HERO BEFORE / AFTER SLIDER =====
+  const uglyNav = document.getElementById('ugly-nav-overlay');
+  const heroSection = document.getElementById('hero');
+
   function initSlider(containerId, beforeId, handleId, allowClickThrough) {
     const container = document.getElementById(containerId);
     const before = document.getElementById(beforeId);
@@ -242,6 +245,11 @@ document.addEventListener('DOMContentLoaded', () => {
       pct = Math.max(4, Math.min(96, pct));
       before.style.width = pct + '%';
       handle.style.left = pct + '%';
+      // Sync ugly nav overlay width
+      if (uglyNav && containerId === 'hero') {
+        const pxWidth = (pct / 100) * rect.width + rect.left;
+        uglyNav.style.width = pxWidth + 'px';
+      }
     }
 
     handle.addEventListener('mousedown', (e) => { e.preventDefault(); dragging = true; });
@@ -258,6 +266,23 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   initSlider('hero', 'hero-before', 'hero-slider-handle', true);
+
+  // Hide ugly nav when scrolled past hero
+  function updateUglyNav() {
+    if (!uglyNav || !heroSection) return;
+    const heroBottom = heroSection.getBoundingClientRect().bottom;
+    if (heroBottom <= 0) {
+      uglyNav.classList.add('hidden');
+    } else {
+      uglyNav.classList.remove('hidden');
+    }
+  }
+
+  // Set initial ugly nav width
+  if (uglyNav && heroSection) {
+    const rect = heroSection.getBoundingClientRect();
+    uglyNav.style.width = (0.5 * rect.width + rect.left) + 'px';
+  }
 
   // ===== BEFORE / AFTER SLIDER =====
   const ba = document.getElementById('ba');
@@ -331,6 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateProgress();
     updateNav();
     updateSticky();
+    updateUglyNav();
     animateCounters();
     revealCards();
     checkReveals();
