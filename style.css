@@ -450,6 +450,46 @@ section { padding: 0 24px }
   color: var(--text3);
 }
 
+.result-review {
+  padding: 16px 20px 20px;
+  border-top: 1px solid var(--bg2);
+}
+
+.result-review-stars {
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.result-review-quote {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--text2);
+  font-style: italic;
+  margin: 0 0 14px;
+}
+
+.result-review-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-review-author .review-avatar {
+  width: 32px;
+  height: 32px;
+  font-size: 13px;
+}
+
+.result-review-author .review-name {
+  font-size: 13px;
+}
+
+.result-review-author .review-role {
+  font-size: 12px;
+}
+
 @media (max-width: 768px) {
   .results-grid { grid-template-columns: 1fr }
 }
