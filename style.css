@@ -1226,10 +1226,10 @@ footer .footer-sep {
   pointer-events: auto;
 }
 
-/* Before/After toggle — fixed above sticky CTA */
+/* Before/After toggle — fixed bottom bar replacing sticky CTA */
 .ba-toggle {
   position: fixed;
-  bottom: 68px;
+  bottom: 24px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1100;
