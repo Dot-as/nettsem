@@ -232,30 +232,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnBefore = document.getElementById('ba-btn-before');
   const btnAfter = document.getElementById('ba-btn-after');
 
-  const baToggle = document.getElementById('ba-toggle');
-  const baToggleParent = baToggle ? baToggle.parentNode : null;
-  const baToggleNext = baToggle ? baToggle.nextElementSibling : null;
-
-  if (btnBefore && btnAfter && before && baToggle) {
+  if (btnBefore && btnAfter && before) {
     btnBefore.addEventListener('click', () => {
       before.classList.add('active');
       btnBefore.classList.add('active');
       btnAfter.classList.remove('active');
       document.body.classList.add('before-active');
-      // Move toggle to body so it's above the overlay
-      document.body.appendChild(baToggle);
     });
     btnAfter.addEventListener('click', () => {
       before.classList.remove('active');
       btnAfter.classList.add('active');
       btnBefore.classList.remove('active');
       document.body.classList.remove('before-active');
-      // Move toggle back into hero
-      if (baToggleNext) {
-        baToggleParent.insertBefore(baToggle, baToggleNext);
-      } else {
-        baToggleParent.appendChild(baToggle);
-      }
     });
   }
 

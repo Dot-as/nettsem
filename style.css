@@ -1227,26 +1227,24 @@ footer .footer-sep {
   pointer-events: auto;
 }
 
-/* Before/After toggle — inline in hero, fixed when Før active */
+/* Before/After toggle — always visible, fixed position */
 .ba-toggle {
-  position: relative;
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1100;
-  display: inline-flex;
+  display: flex;
   background: var(--card);
   border: 1px solid var(--bg3);
   border-radius: 100px;
   padding: 4px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
-  margin-bottom: 24px;
 }
 
-/* Ugly style when before is active — switch to fixed so it stays visible above overlay */
+/* Ugly style when before is active */
 body.before-active .ba-toggle {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
   background: #D0D0D0;
   border-color: #999;
   box-shadow: 0 4px 16px rgba(0,0,0,0.2);
