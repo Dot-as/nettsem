@@ -1226,18 +1226,20 @@ footer .footer-sep {
   pointer-events: auto;
 }
 
-/* Before/After toggle — below CTA, same spot for both modes */
+/* Before/After toggle — fixed above sticky CTA */
 .ba-toggle {
-  position: relative;
+  position: fixed;
+  bottom: 68px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1100;
-  display: inline-flex;
+  display: flex;
   background: var(--card);
   border: 1px solid var(--bg3);
   border-radius: 100px;
   padding: 4px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
-  margin-top: 16px;
 }
 
 /* Ugly style when before is active */
