@@ -47,28 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const stickyText = document.querySelector('.sticky-text');
   const stickyBtn = document.querySelector('.sticky-btn');
 
-  function updateSticky() {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const pct = scrollTop / docHeight;
-
-    if (scrollTop > 400) {
-      stickyCta.classList.add('visible');
-    } else {
-      stickyCta.classList.remove('visible');
-    }
-
-    if (pct < 0.33) {
-      stickyText.innerHTML = '<strong>Nettsmed</strong> — Nettsider for norske bedrifter';
-      stickyBtn.textContent = 'Se eksempler';
-    } else if (pct < 0.66) {
-      stickyText.innerHTML = 'Ferdig nettside fra <strong>15 000 kr</strong>';
-      stickyBtn.textContent = 'Få gratis skisse';
-    } else {
-      stickyText.innerHTML = 'Klar på <strong>48 timer</strong> — betal kun om du er fornøyd';
-      stickyBtn.textContent = 'Start nå';
-    }
-  }
+  function updateSticky() {}
 
 
   // ===== TRICK 3: Animated Counters =====
