@@ -1,4 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#fff"/>
-  <text x="32" y="44" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="400" fill="#B45A2B">SEM</text>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1');
+  </style>
+  <text x="32" y="46" text-anchor="middle" font-family="'Instrument Serif', Georgia, serif" font-size="36" font-weight="600" letter-spacing="-0.02em">
+    <tspan fill="#2C2418">N</tspan><tspan fill="#D42B2B">s</tspan>
+  </text>
 </svg>
